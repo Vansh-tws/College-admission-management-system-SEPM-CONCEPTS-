@@ -1,0 +1,75 @@
+print("COLLEGE ADMISSION MANAGEMENT SYSTEM")
+print("COCOMO COST ESTIMATION")
+print("------------------------------------")
+
+classes = {
+    "User": 80,
+    "Student": 120,
+    "Admin": 120,
+    "Application": 150,
+    "Document": 80,
+    "Payment": 100,
+    "PaymentGateway": 80,
+    "Notification": 70,
+    "Report": 100,
+    "EntranceExam": 100,
+    "AdmissionOfficer": 80,
+    "PaymentHistory": 80
+}
+
+total_loc = sum(classes.values())
+
+print("\nEstimated Lines of Code:")
+for name, loc in classes.items():
+    print(name, ":", loc)
+
+print("\nTotal LOC:", total_loc)
+
+kloc = total_loc / 1000
+
+print("KLOC:", round(kloc, 3))
+
+print("\nSelect Project Mode")
+print("1. Organic")
+print("2. Semi-Detached")
+print("3. Embedded")
+
+choice = int(input("Enter your choice: "))
+
+if choice == 1:
+    a = 2.4
+    b = 1.05
+    c = 2.5
+    d = 0.38
+    mode = "Organic"
+
+elif choice == 2:
+    a = 3.0
+    b = 1.12
+    c = 2.5
+    d = 0.35
+    mode = "Semi-Detached"
+
+elif choice == 3:
+    a = 3.6
+    b = 1.20
+    c = 2.5
+    d = 0.32
+    mode = "Embedded"
+
+else:
+    print("Invalid choice")
+    exit()
+
+effort = a * (kloc ** b)
+development_time = c * (effort ** d)
+staff = effort / development_time
+
+print("\nCOCOMO RESULT")
+print("------------------------------------")
+print("Project Mode:", mode)
+print("Total LOC:", total_loc)
+print("KLOC:", round(kloc, 3))
+print("Effort:", round(effort, 2), "Person-Months")
+print("Development Time:", round(development_time, 2), "Months")
+print("Average Staff:", round(staff, 2), "Persons")
